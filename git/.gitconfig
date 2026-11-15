@@ -1,0 +1,16 @@
+# Personal git config, tracked in dotfiles.
+# Nothing in this file names an employer or a machine.
+
+# Default identity: personal, with the personal GitHub account.
+[user]
+	name = Kerollos Magdy
+	email = contact@kerolloz.dev
+[credential "https://github.com"]
+	helper =
+	helper = "!f() { test \"$1\" = get && echo username=kerolloz && echo password=$(gh auth token -u kerolloz); }; f"
+
+# Machine-local config: work identities (includeIf rules), hooks, anything an
+# employer provisions. Untracked. Git skips this include if the file is missing.
+# Keep it last so it can override everything above.
+[include]
+	path = ~/.config/git/local.gitconfig
