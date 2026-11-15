@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: shellcheck install.sh
+
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      # GUI apps are not needed to prove the bootstrap works.
+      HOMEBREW_BUNDLE_CASK_SKIP: cmux visual-studio-code
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap
+        run: ./install.sh
+      - name: Run again to check it is repeatable
+        run: ./install.sh
+      - name: Shell starts and finds the tools
+        run: |
+          for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+            if [ -x "$b" ]; then eval "$("$b" shellenv)"; fi
+          done
+          zsh -ic 'command -v nvim lsd bat fd rg fzf jq mise node bun go'
+          test -L "$HOME/.gitconfig"
+          git config --global user.name
