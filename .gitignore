@@ -1,0 +1,2 @@
+# Lock file cmux creates next to its settings when it writes them
+cmux/.config/cmux/*.lock

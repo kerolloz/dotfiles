@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+  "browser": {
+    "openTerminalLinksInCmuxBrowser": false,
+    "interceptTerminalOpenCommandInCmuxBrowser": false
+  },
+  "shortcuts": {
+    "bindings": {
+      "splitRight": "cmd+shift+k",
+      "splitDown": "cmd+shift+o",
+      "clearScreenKeepScrollback": "",
+      "reopenPreviousSession": "",
+      "closeTab": "cmd+w",
+      "focusRight": "cmd+opt+→",
+      "focusLeft": "cmd+opt+←",
+      "focusUp": "cmd+opt+↑",
+      "focusDown": "cmd+opt+↓"
+    }
+  }
+}
