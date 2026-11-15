@@ -1,0 +1,8 @@
+# Runtimes I want on every machine, managed by mise.
+# Lives in conf.d so it sits beside, and never replaces, a config.toml
+# that an employer may provision at ~/.config/mise/config.toml.
+
+[tools]
+node = "lts"
+bun = "latest"
+go = "latest"
