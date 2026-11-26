@@ -9,7 +9,6 @@ brew "neovim"
 
 # Modern CLI replacements
 brew "lsd"
-brew "eza"
 brew "bat"
 brew "fd"
 brew "ripgrep"
