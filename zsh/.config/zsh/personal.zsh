@@ -39,6 +39,11 @@ source $ZSH/oh-my-zsh.sh
 if command -v lsd >/dev/null 2>&1; then alias ls="lsd"; fi
 alias ll="ls -la"
 
+# tailscaled runs in userspace mode from a LaunchAgent with its own socket, not /var/run.
+if [[ -d "$HOME/.local/share/tailscale" ]]; then
+  alias tailscale="tailscale --socket=$HOME/.local/share/tailscale/tailscaled.sock"
+fi
+
 if command -v nvim >/dev/null 2>&1; then
   alias vi="nvim"
   alias vim="nvim"
